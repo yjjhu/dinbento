@@ -1,0 +1,46 @@
+<%= render 'shared/title', title: "Show" %>
+
+<p id="notice"><%= notice %></p>
+
+ <table class="table">
+   <tr>
+     <td><strong>姓名:</strong></td>
+     <td><%= @order.name %></td>
+   </tr>
+     <td><strong>Phone:</strong></td>
+     <td><%= @order.phone %></td>
+   <tr>
+     <td><strong>訂單內容:</strong></td>
+     <td><%= @order.description %></td>
+   </tr>
+ </table>
+ 
+ <h4>留言區:</h4>
+ 
+ <!% @order.comments.order("created_at DESC").each do |comment| %-->
+ <% @order.comments.reverse.each do |comment| %>
+   <div class="row">
+     <div class="col-md-6 well">
+       <p>
+         <%= comment.content %>
+       </p>
+       <br>
+       <small>留言者： </small><%= "#{comment.user.name}" %>
+       <br>
+       <small>Time： </small><%= "#{comment.created_at}"%>
+     </div>
+   </div>
+ <% end %>
+ 
+ <% if logged_in? %>
+   <h4>請留言:</h4>
+   <%= form_for [@order, @comment] do |f| %>
+     <div class="row">
+       <%= f.text_area :content, rows: 5, class: 'col-md-4' %>
+       <div class="col-md-2">
+         <%= f.submit '留言', class: 'btn btn-primary' %>
+       </div>
+     </div>
+     <br>
+   <% end %> 
+<% end %>
