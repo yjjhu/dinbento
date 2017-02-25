@@ -4,12 +4,14 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
+#除錯
+gem 'pry'
 #樣式
 gem 'bootstrap-sass'
 #加密
 gem 'bcrypt', '~> 3.1.7'
-
+#rails c 編譯
+gem 'awesome_print'
 #分頁
 gem 'kaminari'
 #多國語系
@@ -17,7 +19,8 @@ gem 'rails-i18n'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
-
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -55,16 +58,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  #除錯
-  gem 'pry'
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
-  #rails c 編譯
-  gem 'awesome_print'
-end
-
-group :production do
-  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
