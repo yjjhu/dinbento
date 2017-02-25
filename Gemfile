@@ -4,14 +4,12 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-#除錯
-gem 'pry'
+
 #樣式
 gem 'bootstrap-sass'
 #加密
 gem 'bcrypt', '~> 3.1.7'
-#rails c 編譯
-gem 'awesome_print'
+
 #分頁
 gem 'kaminari'
 #多國語系
@@ -58,7 +56,15 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-end
 
+  #rails c 編譯
+  gem 'awesome_print'
+  #除錯
+  gem 'pry'
+  
+end
+group :production do
+  gem 'pg'
+end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
